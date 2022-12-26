@@ -23,6 +23,7 @@ def checkAdjacent(x,y):
     else: return False
     
 def randomWalk(x,y):
+    # walks in a random direction with step size 1 2 or 3
     dir = random.choice(directions)
     step_size = random.choice([1,2,3])
     x += dir[0]*step_size
@@ -59,7 +60,7 @@ def randomWalk(x,y):
 
 def select_point(outer_rec, inner_recs):
     # outer_rec: dictionary with keys x1,y1,x2,y2
-    # inner_rec: list of dictionaries
+    # inner_recs: list of dictionaries of rectangles
     # randomly selects a point that is inside the outer rec but not contained in any of the inner recs
     while True:
         # Generate a random x coordinate within the range of x1 and x2
@@ -97,10 +98,14 @@ def stickToSnowflake():
 cards = {
     'You':'e',
     '你':'c'
-}      
+}  
+
+# select the output type
+# type = 'gif'
+type = 'mp4'    
 
 for n,t in cards.items():
-    print('making card for', n,'...')
+    print(f'making {type} card for {n} ...')
     all_frames = []
     grid = np.zeros((XMAX,YMAX))
     all_frames.append(np.uint8(grid.copy()))
@@ -199,7 +204,15 @@ for n,t in cards.items():
 
     for i in range(25):
         processed_frames.append(background)
-    imageio.mimsave(f"{n}.gif", processed_frames, duration=0.1)
+    
+    if type == 'gif':
+        imageio.mimsave(f"cards/{n}.gif", processed_frames, duration=0.1)
+
+    elif type == 'mp4':
+        video_writer = imageio.get_writer(f'cards/{n}.mp4', fps=30)
+        for image in processed_frames:
+            video_writer.append_data(image)
+        video_writer.close()
 
 
 
