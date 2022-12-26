@@ -38,25 +38,24 @@ def randomWalk(x,y):
         y = 0
         
     return x,y
-        
 
-def generateRandomInRange(min1,max1,min2,max2):
-    a = np.random.rand()
-    if a > 0.5:
-        x = random.randint(min1,max1)
-    else:
-        x = random.randint(min2,max2)
-    return x
+# def generateRandomInRange(min1,max1,min2,max2):
+#     a = np.random.rand()
+#     if a > 0.5:
+#         x = random.randint(min1,max1)
+#     else:
+#         x = random.randint(min2,max2)
+#     return x
 
-def generateStartCoordinates():
-    if np.random.rand() > 0.5:
-        x = generateRandomInRange(BORDER,XMAX-2*BORDER,BORDER,XMAX-2*BORDER)
-        y = generateRandomInRange(BORDER,2*BORDER,YMAX-2*BORDER,YMAX-BORDER)
-    else:
-        x = generateRandomInRange(BORDER,2*BORDER,XMAX-2*BORDER,XMAX-BORDER)
-        y = generateRandomInRange(BORDER,YMAX-2*BORDER,BORDER,YMAX-2*BORDER)
+# def generateStartCoordinates():
+#     if np.random.rand() > 0.5:
+#         x = generateRandomInRange(BORDER,XMAX-2*BORDER,BORDER,XMAX-2*BORDER)
+#         y = generateRandomInRange(BORDER,2*BORDER,YMAX-2*BORDER,YMAX-BORDER)
+#     else:
+#         x = generateRandomInRange(BORDER,2*BORDER,XMAX-2*BORDER,XMAX-BORDER)
+#         y = generateRandomInRange(BORDER,YMAX-2*BORDER,BORDER,YMAX-2*BORDER)
         
-    return (x,y)
+#     return (x,y)
 
 def select_point(outer_rec, inner_recs):
     # outer_rec: dictionary with keys x1,y1,x2,y2
