@@ -101,8 +101,8 @@ cards = {
 }  
 
 # select the output type
-# type = 'gif'
-type = 'mp4'    
+type = 'gif'
+# type = 'mp4'    
 
 for n,t in cards.items():
     print(f'making {type} card for {n} ...')
@@ -136,8 +136,8 @@ for n,t in cards.items():
     elif t == 'c':
         image = np.zeros((grid.shape[0],grid.shape[1],3), dtype=np.uint8)
 
-        # 定义宋体路径
-        fontpath = 'bold_cn.ttf'
+        # 定义字体路径
+        fontpath = 'fonts/bold_cn.ttf'
         font_cn = ImageFont.truetype(fontpath, 35)
         img_pil = Image.fromarray(image)
 
@@ -158,8 +158,6 @@ for n,t in cards.items():
         text_org = (text_y, text_x)
                 
         draw.text(text_org, text, font=font_cn, fill=(255, 255, 255))
-
-
         save_image = np.array(img_pil)
 
         grid = cv2.cvtColor(save_image, cv2.COLOR_BGR2GRAY)
